@@ -1,5 +1,5 @@
 # iterative-backtracking-maze-generator
-[![License: MIT]][license]  [![Version]][version-badge]
+Version 1.0.0
 
 **Short pitch:** A fast, server-friendly procedural maze generator for Roblox games. Generates reproducible mazes via seed, scales to 100×100 cells, and uses chunked asynchronous rendering with rectangular merging.
 
@@ -22,7 +22,7 @@ See `INSTALLATION.md` for exact steps.
 
 ## Usage example
 ```lua
-local MazePkg = require(path.to.ProceduralMazeGenerator.src.init)
+local MazePkg = require(path.to.MazeGenerator.src.init)
 local maze = MazePkg.new({ width = 50, height = 50, cellSize = 6, seed = 12345, chunkSize = 10 })
 maze:Generate()
 maze:Render(workspace)
