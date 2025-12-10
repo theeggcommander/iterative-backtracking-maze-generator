@@ -41,12 +41,10 @@ chunkSize (int) — cells per chunk for renderer. Default: 10
 
 yieldEvery (int) — generator/renderer yield frequency. Default: 50
 
-License
-
+## License
 MIT — see LICENSE file.
 
-Contact / Credits
-
+## Contact / Credits
 Packaged by TheEggCommander — https://x.com/TheEggCommander 
 https://www.youtube.com/@TheEggCommander 
 https://github.com/theeggcommander 
