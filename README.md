@@ -30,10 +30,15 @@ maze:Render(workspace)
 
 ## Configuration options
 width (int) — cells horizontally. Default: 20
+
 height (int) — cells vertically. Default: 20
+
 cellSize (float) — studs per cell. Default: 4
+
 seed (int) — reproducible seed. Default: random
+
 chunkSize (int) — cells per chunk for renderer. Default: 10
+
 yieldEvery (int) — generator/renderer yield frequency. Default: 50
 
 License
@@ -42,4 +47,6 @@ MIT — see LICENSE file.
 
 Contact / Credits
 
-Packaged by TheEggCommander — https://x.com/TheEggCommander https://www.youtube.com/@TheEggCommander https://github.com/theeggcommander 
+Packaged by TheEggCommander — https://x.com/TheEggCommander 
+https://www.youtube.com/@TheEggCommander 
+https://github.com/theeggcommander 
