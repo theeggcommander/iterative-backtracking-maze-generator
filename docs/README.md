@@ -1,4 +1,4 @@
-# iterative-backtracking-maze-generator
+# README.md
 Version 1.0.0
 
 **Short pitch:** A fast, server-friendly procedural maze generator for Roblox games. Generates reproducible mazes via seed, scales to 100×100 cells, and uses chunked asynchronous rendering with rectangular merging.
