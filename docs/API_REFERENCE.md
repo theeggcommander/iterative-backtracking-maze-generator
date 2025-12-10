@@ -3,7 +3,7 @@
 ## Package entry 
 
 ```lua
-local MazePkg = require(path.to.proceduralMaze)
+local MazePkg = require(path.to.proceduralMaze.src.MazeGenerator)
 MazePkg.new(config) 
 ```
 Constructs a new maze generator instance.
