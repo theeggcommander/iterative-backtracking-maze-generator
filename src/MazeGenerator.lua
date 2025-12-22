@@ -20,7 +20,8 @@ function MazeGenerator.New(opts)
 	self.Width = opts.Width or 20         -- cells
 	self.Height = opts.Height or 20       -- cells
 
-	self.CellSize = opts.CellSize or 4    -- studs per cell
+	self.CellSize = opts.CellSize or 10    -- studs per cell
+	self.WallHeight = opts.WallHeight or 30
 	self.Seed = opts.Seed or tick() * 1000
 	self.SeedManager = SeedManager.New(self.Seed)
 	self.Grid = {}        -- 2D table: visited & walls representation
