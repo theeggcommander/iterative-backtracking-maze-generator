@@ -25,6 +25,7 @@ requestGenerationEvent.OnServerEvent:Connect(function(_, h, w, s) -- Height, wid
 		Width = w,
 		Seed = s,
 		-- defaults
+		CellSize = 4,
 		ChunkSize = 10,
 		ParentModel = workspace,
 		YieldEvery = 50,
