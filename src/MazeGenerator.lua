@@ -31,7 +31,7 @@ function MazeGenerator.New(opts)
 
 	-- Performance flags
 	self.YieldEvery = opts.YieldEvery or 50 -- yield every N processed cells (as requested)
-	self.DestroyPrevious = opts.DestroyPrevious or true
+	self.CanBeDestroyed = opts.CanBeDestroyed or true -- allows maze to be destroyed when a new one is created
 	--self.UseUnionIfAvailable = opts.UseUnionIfAvailable == nil and true or opts.UseUnionIfAvailable
 
 	return self
@@ -171,10 +171,9 @@ function MazeGenerator:SetSeed(seed)
 	self.SeedManager:SetSeed(seed)
 end
 
--- Utility to destroy previous maze
-function MazeGenerator:DestroyPreviousMaze()
-	if not self.DestroyPrevious then return end
-	
+-- Utility to destroy the current maze
+function MazeGenerator:DestroyMaze()
+	if not self.CanBeDestroyed then return end
 	self.ParentModel:FindFirstChild(("Maze_%dx%d"):format(self.Width, self.Height)):Destroy()
 end
 
