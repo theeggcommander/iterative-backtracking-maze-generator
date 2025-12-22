@@ -1,6 +1,6 @@
-local mazeGenerator = require(game.ServerScriptService.MazeModules.MazeGenerator) -- Adjust path to the MazeGenerator module
+local mazeGenerator = require(game.ServerScriptService.MazeModules.MazeGenerator)
 
-local requestGenerationEvent = game.ReplicatedStorage.RequestGeneration -- Path to RemoteEvent connecting client and server
+local requestGenerationEvent = game.ReplicatedStorage.RequestGeneration
 
 local function checkIfNum(x: any): number | false
 	if typeof(x) == "number" then return x end
@@ -28,7 +28,7 @@ requestGenerationEvent.OnServerEvent:Connect(function(_, h, w, s) -- Height, wid
 		ChunkSize = 10,
 		ParentModel = workspace,
 		YieldEvery = 50,
-		DestroyPrevious = true -- setting this to false will prevent maze destruction
+		CanBeDestroyed = true -- setting this to false will prevent maze destruction when a new maze is created
 	}
 	
 	local newMaze = mazeGenerator.New(opts) -- New MazeGenerator instance created
@@ -36,8 +36,8 @@ requestGenerationEvent.OnServerEvent:Connect(function(_, h, w, s) -- Height, wid
 	
 	-- Destroys previous maze, commenting this out also disables destruction
 	if currentMaze then
+		currentMaze:DestroyMaze()
 		currentMaze = nil
-		newMaze:DestroyPreviousMaze()
 	end
 	
 	newMaze:Render() -- Render maze
