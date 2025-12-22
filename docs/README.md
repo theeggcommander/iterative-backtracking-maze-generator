@@ -29,22 +29,26 @@ maze:Render(workspace)
 ```
 
 ## Configuration options
-width (int) — cells horizontally. Default: 20
+Width (int) — cells horizontally. Default: 20
 
-height (int) — cells vertically. Default: 20
+Height (int) — cells vertically. Default: 20
 
-cellSize (float) — studs per cell. Default: 4
+CellSize (float) — studs per cell. Default: 4
 
-seed (int) — reproducible seed. Default: random
+Seed (int) — reproducible seed. Default: random
 
-chunkSize (int) — cells per chunk for renderer. Default: 10
+ChunkSize (int) — cells per chunk for renderer. Default: 10
 
-yieldEvery (int) — generator/renderer yield frequency. Default: 50
+YieldEvery (int) — generator/renderer yield frequency. Default: 50
+
+ParentModel (instance) — model the maze is parented to. Default: workspace
+
+DestroyPrevious (bool) — destroys the previous maze model. Default: true
 
 ## License
 MIT — see LICENSE file.
 
 ## Contact / Credits
-Packaged by TheEggCommander — https://x.com/TheEggCommander 
+https://x.com/TheEggCommander 
 https://www.youtube.com/@TheEggCommander 
 https://github.com/theeggcommander 
