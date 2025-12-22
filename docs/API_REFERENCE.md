@@ -9,11 +9,9 @@ MazePkg.new(config)
 Constructs a new maze generator instance.
 
 ## Config fields (defaults):
-`Width` (int) — 20
+`CellSize` (number) — 10
 
-`Height` (int) — 20
-
-`CellSize` (number) — 4
+`WallHeight` (int) — 30
 
 `Seed` (int|nil) — nil (random)
 
