@@ -9,19 +9,21 @@ MazePkg.new(config)
 Constructs a new maze generator instance.
 
 ## Config fields (defaults):
-`width` (int) — 20
+`Width` (int) — 20
 
-`height` (int) — 20
+`Height` (int) — 20
 
-`cellSize` (number) — 4
+`CellSize` (number) — 4
 
-`seed` (int|nil) — nil (random)
+`Seed` (int|nil) — nil (random)
 
-`chunkSize` (int) — 10
+`ChunkSize` (int) — 10
 
-`yieldEvery` (int) — 50
+`YieldEvery` (int) — 50
 
-`parentModel` (Instance) — where rendered Model will be parented
+`ParentModel` (Instance) — workspace
+
+`DestroyPrevious` (bool) — true
 
 Returns: a `MazeGenerator` instance.
 
@@ -58,10 +60,10 @@ maze:GetGrid()
 
 Returns the internal grid table (read-only conventionally).
 
-## Implementation caveats & tips
+```lua
+maze:DestroyPreviousMaze()
+```
+
+Destroys the previous maze IF `DestroyPrevious` is true.
 
 For very large mazes (100×100), tune `chunkSize` and `yieldEvery` to your target environment.
-
-Consider disabling collisions during heavy creation and enabling after any union step to improve performance.
-
-If you intend to export mazes to meshes or save to Datastore, add a mesh-exporter utility that converts the final union into a mesh.
