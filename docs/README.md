@@ -29,11 +29,13 @@ maze:Render(workspace)
 ```
 
 ## Configuration options
-Width (int) — cells horizontally. Default: 20
-
 Height (int) — cells vertically. Default: 20
 
+Width (int) — cells horizontally. Default: 20
+
 CellSize (float) — studs per cell. Default: 4
+
+WallHeight (int) — Wall height. Default: 30
 
 Seed (int) — reproducible seed. Default: random
 
