@@ -8,6 +8,10 @@ local moduleFolder = script.Parent -- you may parent sibling modules to this scr
 local ChunkRenderer = require(moduleFolder:FindFirstChild("ChunkRenderer") or moduleFolder.ChunkRenderer)
 local SeedManager = require(moduleFolder:FindFirstChild("SeedManager") or moduleFolder.SeedManager)
 
+local mazeFolder = Instance.new("Folder", workspace)
+mazeFolder.Name = "MazeFolder"
+game:GetService("CollectionService"):AddTag(mazeFolder, "MazeFolder")
+
 -- Constructor
 function MazeGenerator.New(opts)
 	opts = opts or {}
@@ -15,6 +19,7 @@ function MazeGenerator.New(opts)
 
 	self.Width = opts.Width or 20         -- cells
 	self.Height = opts.Height or 20       -- cells
+
 	self.CellSize = opts.CellSize or 4    -- studs per cell
 	self.Seed = opts.Seed or tick() * 1000
 	self.SeedManager = SeedManager.New(self.Seed)
@@ -22,11 +27,12 @@ function MazeGenerator.New(opts)
 	self.ProcessedCells = 0
 	self._generateCoroutine = nil
 	self._chunkRenderer = ChunkRenderer.New(self, opts.ChunkSize or 10) -- chunk size in cells
-	self.ParentModel = opts.ParentModel or workspace -- where to parent visual model (renderer controls this)
+	self.ParentModel = opts.ParentModel or mazeFolder -- where to parent visual model (renderer controls this)
 
 	-- Performance flags
 	self.YieldEvery = opts.YieldEvery or 50 -- yield every N processed cells (as requested)
-	self.UseUnionIfAvailable = opts.UseUnionIfAvailable == nil and true or opts.UseUnionIfAvailable
+	self.DestroyPrevious = opts.DestroyPrevious or true
+	--self.UseUnionIfAvailable = opts.UseUnionIfAvailable == nil and true or opts.UseUnionIfAvailable
 
 	return self
 end
@@ -35,6 +41,7 @@ end
 function MazeGenerator:_InitGrid()
 	local w, h = self.Width, self.Height
 	self.Grid = {}
+	
 	for x = 1, w do
 		self.Grid[x] = {}
 		for y = 1, h do
@@ -162,6 +169,13 @@ end
 function MazeGenerator:SetSeed(seed)
 	self.Seed = seed
 	self.SeedManager:SetSeed(seed)
+end
+
+-- Utility to destroy previous maze
+function MazeGenerator:DestroyPreviousMaze()
+	if not self.DestroyPrevious then return end
+	
+	self.ParentModel:FindFirstChild(("Maze_%dx%d"):format(self.Width, self.Height)):Destroy()
 end
 
 return MazeGenerator
